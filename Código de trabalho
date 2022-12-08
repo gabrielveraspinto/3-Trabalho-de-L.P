@@ -133,7 +133,7 @@ while True:
     elif o == 5:
         print ("1- Sair")
         print ("2- Voltar")
-        h = int(input("Difite sua escolha: "))
+        h = int(input("Digite sua escolha: "))
         if h == 1:
             print ("Trabalho feito por Gabriel Pinto Veras & Pedro Wesley Lima de Paiva")
             break
