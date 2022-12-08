@@ -1,0 +1,141 @@
+dados_n = []
+dados_c = []
+dados_t = []
+dados_e = []
+dados_em = []
+dados_s = []
+while True:
+    print("======MENU=======")
+    print("1-Cadastrar")
+    print("2-Ler")
+    print("3-Deletar")
+    print("4-Atualizar")
+    print("5-Sair")
+    
+    o = int(input("Digite a opção que você deseja: "))
+    
+    if o == 1:
+        nome = input("Nome: ")
+
+        cpf = input("Digite seu CPF: ")
+
+        tele = input("Digite seu número de telefone: ")
+
+        endereco = input("Digite seu endereço: ")
+
+        email = input("Digite seu email: ")
+        
+        senha = input("Digite sua senha: ")
+        
+        arquivo = open("arquivo1.txt", 'a')
+        arquivo.write('-----CADASTRO-----'+'\n')  
+        arquivo.write('Nome: '+nome+'\n')
+        arquivo.write('CPF: '+cpf+'\n')
+        arquivo.write('Telefone: '+tele+'\n')
+        arquivo.write('Endereço: '+endereco+'\n')
+        arquivo.write('Email: '+email+'\n')
+        arquivo.write('Senha: '+senha+'\n')
+        arquivo.close
+    
+    elif o == 2:
+        arquivo = open("arquivo1.txt", "r+")
+        arq=arquivo.readlines()
+        for linha in arq:
+            print(linha, end='')
+        arquivo.close
+    
+    elif o == 3:
+        print ("Você deseja deletar seus dados ?")
+        print ("1-Sim")
+        print ("2-Apenas um cadastro ?")
+        esc  = int(input("Digite a opção que você deseja: "))
+        
+        
+        if esc == 1:
+            import os
+            os.remove("arquivo1.txt")
+        elif esc == 2:
+            print ("Qual o cadastro que você deseja deletar ? ")
+            i = int(input("Escolha o cadastro: "))
+            lista_dados = []
+            arquivo = open("arquivo1.txt", 'r')
+            arq = arquivo.readlines()
+            for dado in arq:
+                lista_dados.append(dado)
+            arquivo.close()
+            i=i*6
+            del lista_dados[i-6:i]
+            import os
+            os.remove("arquivo1.txt")
+            arquivo = open("arquivo1.txt", 'a')
+            for dado in lista_dados:
+                arquivo.write(dado)
+            arquivo.close()
+    
+    elif o == 4:
+        print ("Você deseja atualizar seus dados ?")
+        print ("1-Sim, atualizar todos")
+        print ("2-Apenas um campo ?")
+        esc  = int(input("Digite a opção que você deseja: "))
+        
+        if esc == 1:
+            arquivo = open("arquivo1.txt", 'r')
+            c = arquivo.readlines()
+            linhas = (len(c))/6
+            k=1
+            import os
+            os.remove("arquivo1.txt")
+            while k<=linhas:
+                print("--Atualizaando Cadastro ",k)
+                nome = input("Nome: ")
+
+                cpf = input("Digite seu CPF: ")
+
+                tele = input("Digite seu número de telefone: ")
+
+                endereco = input("Digite seu endereço: ")
+
+                email = input("Digite seu email: ")
+                
+                senha = input("Digite sua senha: ")
+                
+                arquivo = open("arquivo1.txt", 'a')  
+                arquivo.write('Nome: '+nome+'\n')
+                arquivo.write('CPF: '+cpf+'\n')
+                arquivo.write('Telefone: '+tele+'\n')
+                arquivo.write('Endereço: '+endereco+'\n')
+                arquivo.write('Email: '+email+'\n')
+                arquivo.write('Senha: '+senha+'\n')
+                arquivo.close
+                k= k+1
+        elif esc == 2:
+            print ("Qual o cadastro que você deseja deletar ? ")
+            i = int(input("Escolha o cadastro: "))
+            lista_dados = []
+            arquivo = open("arquivo1.txt", 'r')
+            arq = arquivo.readlines()
+            for dado in arq:
+                lista_dados.append(dado)
+            arquivo.close()
+            i=i*6
+            lista_dados[i-5]='Nome: '+input("Digite seu novo nome: ")+'\n'
+            lista_dados[i-4]='CPF: '+input("Digite seu novo CPF: ")+'\n'
+            lista_dados[i-3]='Telefone: '+input("Digite seu novo Telefone: ")+'\n'
+            lista_dados[i-2]='Endereço: '+input("Digite seu novo endereço: ")+'\n'
+            lista_dados[i-1]='Email: '+input("Digite seu novo email: ")+'\n'
+            lista_dados[i]='Senha: '+input("Digite sua nova senha: ")+'\n'
+            import os
+            os.remove("arquivo1.txt")
+            arquivo = open("arquivo1.txt", 'a')
+            for dado in lista_dados:
+                arquivo.write(dado)
+            arquivo.close()
+    elif o == 5:
+        print ("1- Sair")
+        print ("2- Voltar")
+        h = int(input("Difite sua escolha: "))
+        if h == 1:
+            print ("Trabalho feito por Gabriel Pinto Veras & Pedro Wesley Lima de Paiva")
+            break
+        elif h == 2:
+            esc=0
